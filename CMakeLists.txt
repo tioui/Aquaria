@@ -24,8 +24,6 @@ ENDIF(WIN32)
 
 IF(MSYS)
     SET(WIN32_TRUE TRUE)
-    ADD_DEFINITIONS(-DBBGE_BUILD_WINDOWS=1)
-    SET(EXETYPE WIN32)
 ENDIF(MSYS)
 
 # if no build type was provided, set a default one
@@ -206,11 +204,12 @@ if(NOT SDL_FOUND)
             set(SDLMAIN_LIBRARY "${SDLDIR}/lib/win32/SDLmain.lib" CACHE FILEPATH "Where the SDLmain library can be found" FORCE)
             set(SDL_LIBRARY "${SDLDIR}/lib/win32/SDL.lib" CACHE FILEPATH "Where the SDL library can be found" FORCE)
         endif(AQUARIA_USE_SDL2)
-		if(MSYS)
-    	    set(SDL_LIBRARY -lmingw32 ${SDLMAIN_LIBRARY} ${SDL_LIBRARY}) # not seen by user
-		else(MSYS)
-        	set(SDL_LIBRARY ${SDLMAIN_LIBRARY} ${SDL_LIBRARY}) # not seen by user
-		endif(MSYS())
+        set(SDL_LIBRARY -lmingw32 ${SDLMAIN_LIBRARY} ${SDL_LIBRARY})
+		#if(MSYS)
+    	#    set(SDL_LIBRARY -lmingw32 ${SDLMAIN_LIBRARY} ${SDL_LIBRARY}) # not seen by user
+		#else(MSYS)
+        #	set(SDL_LIBRARY ${SDLMAIN_LIBRARY} ${SDL_LIBRARY}) # not seen by user
+		#endif(MSYS())
     else(MACOSX)
         message(SEND_ERROR "We don't have a prebuilt SDL for this platform.")
     endif(MACOSX)
