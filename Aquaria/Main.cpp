@@ -80,6 +80,8 @@ static void CheckConfig(void)
 
         std::string dsqParam = GetCommandLine();
 
+        blahblah
+
 #else
 
 	extern "C" int main(int argc,char *argv[])
