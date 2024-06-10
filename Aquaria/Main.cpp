@@ -22,10 +22,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <filesystem>
 #include "DSQ.h"
 
-
 #ifdef BBGE_BUILD_WINDOWS
-	#include <shellapi.h>
+#include <shellapi.h>
 #endif
+
 
 
 static void MakeRan(void)
@@ -80,18 +80,16 @@ static void CheckConfig(void)
 
         std::string dsqParam = GetCommandLine();
 
-        blahblah
-
 #else
 
-	extern "C" int main(int argc,char *argv[])
+	int main(int argc,char *argv[])
 	{
 		std::string dsqParam = ""; // fileSystem
 		std::string extraDataDir = "";
         std::string appImageExtraDir = "";
-        const char *appImageDir = 0;
+        const char *appImageDir = nullptr;
 
-		const char *envPath = 0;
+		const char *envPath = nullptr;
 #ifdef BBGE_BUILD_UNIX
 		envPath = getenv("AQUARIA_DATA_PATH");
 		if (envPath)
